@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {
+  SORT_PEOPLE,
   ADD_PERSON,
 } from './constants'
 
@@ -25,6 +26,20 @@ const state = {
 }
 
 const mutations = {
+  /**
+   * @param {Boolean} asc True to sort ascending, false for descending
+   */
+  [SORT_PEOPLE](state, asc) {
+    const dir = asc ? 1 : -1
+    state.personList.sort((a, b) => {
+      // Change all values to lowercase so "Z" doesn't sort above "a"
+      const name = x => state.persons[x].name.toLowerCase() 
+      const nameA = name(a), nameB = name(b)
+      if (nameA > nameB) return dir
+      if (nameA < nameB) return -dir
+      return 0
+    })
+  },
   [ADD_PERSON](state) {
     // Add data to state
     // Generate a unique ID
