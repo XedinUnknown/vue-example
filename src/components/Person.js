@@ -5,6 +5,11 @@ export default {
       return this.$store.state.persons[this.id]
     }
   },
+  methods: {
+    remove() {
+      this.$store.commit('REMOVE_PERSON', this.id)
+    }
+  },
   render(h) {
     return (
       <div>
@@ -12,6 +17,7 @@ export default {
           value={this.person.name} />
         <input placeholder="Occupation"
           value={this.person.occupation} />
+        <button onClick={this.remove}>Remove</button>
       </div>
     )
   }

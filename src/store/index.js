@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import {
   SORT_PEOPLE,
   ADD_PERSON,
+  REMOVE_PERSON
 } from './constants'
 
 Vue.use(Vuex)
@@ -51,6 +52,18 @@ const mutations = {
     // Add to array
     state.personList.push(id)
   },
+  /**
+   * @param {String} id Unique identifier for the person to delete
+   */
+  [REMOVE_PERSON](state, id) {
+    // First, remove from array
+    const index = state.personList.indexOf(id)
+    if (index >= 0) {
+      state.personList.splice(index, 1)
+    }
+    // Second, remove the object
+    Vue.delete(state.persons, id)
+  }
 }
 
 export default new Vuex.Store({state, mutations})
