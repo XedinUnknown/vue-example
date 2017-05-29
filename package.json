@@ -1,0 +1,21 @@
+{
+  "name": "vue-example",
+  "author": {
+    "name": "Kincaid O'Neil",
+    "url": "https://kincaidoneil.com/"
+  },
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "vue": "^2.3.3",
+    "vuex": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "mocha": "^3.4.2",
+    "poi": "^8.1.1"
+  }
+}
