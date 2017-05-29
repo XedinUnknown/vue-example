@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import {
   SORT_PEOPLE,
   ADD_PERSON,
+  EDIT_PERSON,
   REMOVE_PERSON
 } from './constants'
 
@@ -51,6 +52,17 @@ const mutations = {
     })
     // Add to array
     state.personList.push(id)
+  },
+  /**
+   * @param {String} payload.id Unique identifier for the person to edit
+   * @param {Object} payload.data Object of data to merge with the existing info,
+   * typically containing either 'name' or 'occupation' keys
+   */
+  [EDIT_PERSON](state, payload) {
+    Vue.set(state.persons, payload.id, {
+      ...state.persons[payload.id],
+      ...payload.data
+    })
   },
   /**
    * @param {String} id Unique identifier for the person to delete
