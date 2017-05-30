@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {
+  LOAD_PEOPLE,
   SORT_PEOPLE,
   ADD_PERSON,
   EDIT_PERSON,
@@ -28,6 +29,14 @@ const state = {
 }
 
 const mutations = {
+  /**
+   * @param {Array} personList TODO: add description
+   * @param {Object} persons TODO: add description
+   */
+  [LOAD_PEOPLE](state, data) {
+    state.personList = data.personList
+    state.persons = data.persons
+  },
   /**
    * @param {Boolean} asc True to sort ascending, false for descending
    */
@@ -78,4 +87,7 @@ const mutations = {
   }
 }
 
-export default new Vuex.Store({state, mutations})
+export default new Vuex.Store({
+  state,
+  mutations
+})
