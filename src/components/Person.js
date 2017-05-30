@@ -2,7 +2,7 @@ export default {
   props: ['id'],
   computed: {
     person() {
-      return this.$store.state.persons[this.id]
+      return this.$store.state.people[this.id]
     }
   },
   methods: {

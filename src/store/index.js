@@ -10,9 +10,9 @@ import {
 
 Vue.use(Vuex)
 
-const state = {
-  personList: [],
-  persons: {}
+export const state = {
+  peopleList: [],
+  people: {}
 }
 
 const mutations = {
@@ -21,17 +21,17 @@ const mutations = {
    * @param {Object} persons TODO: add description
    */
   [LOAD_PEOPLE](state, data) {
-    state.personList = data.personList
-    state.persons = data.persons
+    state.peopleList = data.peopleList
+    state.people = data.people
   },
   /**
    * @param {Boolean} asc True to sort ascending, false for descending
    */
   [SORT_PEOPLE](state, asc) {
     const dir = asc ? 1 : -1
-    state.personList.sort((a, b) => {
+    state.peopleList.sort((a, b) => {
       // Change all values to lowercase so "Z" doesn't sort above "a"
-      const name = x => state.persons[x].name.toLowerCase() 
+      const name = x => state.people[x].name.toLowerCase() 
       const nameA = name(a), nameB = name(b)
       if (nameA > nameB) return dir
       if (nameA < nameB) return -dir
@@ -41,13 +41,13 @@ const mutations = {
   [ADD_PERSON](state) {
     // Add data to state
     // Generate a unique ID
-    const id = String(Math.random())
-    Vue.set(state.persons, id, {
+    const id = String(Date.now() + Math.random())
+    Vue.set(state.people, id, {
       name: '',
       occupation: ''
     })
     // Add to array
-    state.personList.push(id)
+    state.peopleList.push(id)
   },
   /**
    * @param {String} payload.id Unique identifier for the person to edit
@@ -55,8 +55,8 @@ const mutations = {
    * typically containing either 'name' or 'occupation' keys
    */
   [EDIT_PERSON](state, payload) {
-    Vue.set(state.persons, payload.id, {
-      ...state.persons[payload.id],
+    Vue.set(state.people, payload.id, {
+      ...state.people[payload.id],
       ...payload.data
     })
   },
@@ -65,12 +65,12 @@ const mutations = {
    */
   [REMOVE_PERSON](state, id) {
     // First, remove from array
-    const index = state.personList.indexOf(id)
+    const index = state.peopleList.indexOf(id)
     if (index >= 0) {
-      state.personList.splice(index, 1)
+      state.peopleList.splice(index, 1)
     }
     // Second, remove the object
-    Vue.delete(state.persons, id)
+    Vue.delete(state.people, id)
   }
 }
 

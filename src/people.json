@@ -1,6 +1,6 @@
 {
-  "personList": ["1", "2", "3"],
-  "persons": {
+  "peopleList": ["1", "2", "3"],
+  "people": {
     "1": {
       "name": "Johnny Appleseed",
       "occupation": "Farmer"

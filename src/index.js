@@ -16,7 +16,7 @@ new Vue({
   async created() {
     // Load default state from myjson API
     try {
-      let {data} = await axios.get('https://api.myjson.com/bins/scrk9')
+      let {data} = await axios.get('https://api.myjson.com/bins/qb8yh')
       store.commit('LOAD_PEOPLE', data)
     } catch (err) {
       console.error(err)
@@ -31,7 +31,7 @@ new Vue({
         <button onClick={this.sortDes}>Sort Descending</button>
         <br /><br />
         <transition-group tag="div" name="list" class="container">
-          {store.state.personList.map(id => 
+          {store.state.peopleList.map(id => 
             <Person id={id} key={id} />
           )}
         </transition-group>
