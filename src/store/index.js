@@ -17,14 +17,17 @@ export const state = {
 
 const mutations = {
   /**
-   * @param {Array} personList TODO: add description
-   * @param {Object} persons TODO: add description
+   * Populate the state with data
+   * @param {Array} data.peopleList Array of unique IDs for order of each person
+   * @param {Object} data.people Keyed by unqiue IDs, values are an object with
+   * key-value pairs for name and occupation
    */
   [LOAD_PEOPLE](state, data) {
     state.peopleList = data.peopleList
     state.people = data.people
   },
   /**
+   * Sort the list of people by full name
    * @param {Boolean} asc True to sort ascending, false for descending
    */
   [SORT_PEOPLE](state, asc) {
@@ -38,6 +41,9 @@ const mutations = {
       return 0
     })
   },
+  /**
+   * Add a person to the list 
+   */
   [ADD_PERSON](state) {
     // Add data to state
     // Generate a unique ID
@@ -50,6 +56,7 @@ const mutations = {
     state.peopleList.push(id)
   },
   /**
+   * Edit the detials for a specific person
    * @param {String} payload.id Unique identifier for the person to edit
    * @param {Object} payload.data Object of data to merge with the existing info,
    * typically containing either 'name' or 'occupation' keys
@@ -61,6 +68,7 @@ const mutations = {
     })
   },
   /**
+   * Remove a specific person from the list
    * @param {String} id Unique identifier for the person to delete
    */
   [REMOVE_PERSON](state, id) {
