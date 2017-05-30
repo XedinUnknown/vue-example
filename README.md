@@ -1,6 +1,10 @@
 # Vue Example Project
 
 ```bash
+# Clone the repo
+git clone https://github.com/kincaidoneil/vue-example.git
+cd vue-example
+
 # Install all dependencies
 yarn
 
