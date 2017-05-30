@@ -5,8 +5,8 @@
     "url": "https://kincaidoneil.com/"
   },
   "scripts": {
-    "dev": "poi",
-    "build": "poi build"
+    "dev": "poi src/index.js",
+    "build": "poi build src/index.js",
   },
   "dependencies": {
     "axios": "^0.16.1",
