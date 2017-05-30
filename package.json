@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "poi src/index.js",
     "build": "poi build src/index.js",
+    "test": "poi build --config test.config.js && mocha dist/index.spec"
   },
   "dependencies": {
     "axios": "^0.16.1",

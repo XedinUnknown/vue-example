@@ -15,7 +15,7 @@ export const state = {
   people: {}
 }
 
-const mutations = {
+export const mutations = {
   /**
    * Populate the state with data
    * @param {Array} data.peopleList Array of unique IDs for order of each person
